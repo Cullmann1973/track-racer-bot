@@ -22,15 +22,17 @@ async function loadKnowledge(): Promise<{
   wheelbases: any;
   pedals: any;
   parts: any;
+  faqIssues: any;
 }> {
   const basePath = process.cwd();
   
   try {
-    const [products, wheelbases, pedals, parts] = await Promise.all([
+    const [products, wheelbases, pedals, parts, faqIssues] = await Promise.all([
       fs.readFile(path.join(basePath, 'knowledge/products/catalog.json'), 'utf-8'),
       fs.readFile(path.join(basePath, 'knowledge/compatibility/wheelbases.json'), 'utf-8'),
       fs.readFile(path.join(basePath, 'knowledge/compatibility/pedals.json'), 'utf-8'),
       fs.readFile(path.join(basePath, 'knowledge/parts/database.json'), 'utf-8'),
+      fs.readFile(path.join(basePath, 'knowledge/support/faq-issues.json'), 'utf-8'),
     ]);
     
     return {
@@ -38,10 +40,11 @@ async function loadKnowledge(): Promise<{
       wheelbases: JSON.parse(wheelbases),
       pedals: JSON.parse(pedals),
       parts: JSON.parse(parts),
+      faqIssues: JSON.parse(faqIssues),
     };
   } catch (error) {
     console.error('Error loading knowledge base:', error);
-    return { products: {}, wheelbases: {}, pedals: {}, parts: {} };
+    return { products: {}, wheelbases: {}, pedals: {}, parts: {}, faqIssues: {} };
   }
 }
 
@@ -82,6 +85,35 @@ function detectIntent(message: string): string[] {
   }
   if (lower.includes('part number') || lower.includes('replacement')) {
     intents.push('parts_lookup');
+  }
+  
+  // Issue/problem intents
+  if (lower.includes('problem') || lower.includes('issue') || lower.includes('trouble') || lower.includes('help')) {
+    intents.push('troubleshooting');
+  }
+  if (lower.includes('bolt') || lower.includes('screw') || lower.includes('t-nut') || lower.includes('thread')) {
+    intents.push('hardware_issue');
+  }
+  if (lower.includes('flex') || lower.includes('wobble') || lower.includes('loose') || lower.includes('noise') || lower.includes('creak')) {
+    intents.push('stability_issue');
+  }
+  if (lower.includes('align') || lower.includes('hole') || lower.includes('fit') || lower.includes('tolerance')) {
+    intents.push('alignment_issue');
+  }
+  if (lower.includes('instruction') || lower.includes('manual') || lower.includes('assemble') || lower.includes('assembly') || lower.includes('build')) {
+    intents.push('assembly_help');
+  }
+  if (lower.includes('slider') || lower.includes('seat') && (lower.includes('move') || lower.includes('noise'))) {
+    intents.push('seat_issue');
+  }
+  if (lower.includes('monitor') && (lower.includes('stand') || lower.includes('mount') || lower.includes('gap'))) {
+    intents.push('monitor_issue');
+  }
+  if (lower.includes('customer service') || lower.includes('support') || lower.includes('response') || lower.includes('ticket')) {
+    intents.push('support_issue');
+  }
+  if (lower.includes('return') || lower.includes('refund') || lower.includes('exchange')) {
+    intents.push('return_inquiry');
   }
   
   // Equipment mentions
@@ -133,6 +165,36 @@ function buildContext(intents: string[], knowledge: any, userMessage: string): s
   // Add parts info for support queries
   if (intents.some(i => ['missing_part', 'damaged_part', 'parts_lookup'].includes(i))) {
     contexts.push(`## Parts Database\n${JSON.stringify(knowledge.parts, null, 2)}`);
+  }
+  
+  // Add FAQ/Issues knowledge for troubleshooting
+  const issueIntents = [
+    'troubleshooting', 'hardware_issue', 'stability_issue', 'alignment_issue',
+    'assembly_help', 'seat_issue', 'monitor_issue', 'support_issue', 'return_inquiry',
+    'missing_part', 'damaged_part'
+  ];
+  
+  if (intents.some(i => issueIntents.includes(i)) && knowledge.faqIssues) {
+    // Find relevant issues based on keywords in user message
+    const relevantIssues = knowledge.faqIssues.commonIssues?.filter((issue: any) => {
+      const issueText = JSON.stringify(issue).toLowerCase();
+      const words = userMessage.toLowerCase().split(/\s+/);
+      return words.some(word => word.length > 3 && issueText.includes(word));
+    }) || [];
+    
+    if (relevantIssues.length > 0) {
+      contexts.push(`## Relevant Known Issues & Solutions\n${JSON.stringify(relevantIssues.slice(0, 5), null, 2)}`);
+    }
+    
+    // Add FAQ for general questions
+    if (knowledge.faqIssues.frequentQuestions) {
+      contexts.push(`## Frequently Asked Questions\n${JSON.stringify(knowledge.faqIssues.frequentQuestions, null, 2)}`);
+    }
+    
+    // Add pro tips for assembly help
+    if (intents.includes('assembly_help') && knowledge.faqIssues.proTips) {
+      contexts.push(`## Pro Tips\n${JSON.stringify(knowledge.faqIssues.proTips, null, 2)}`);
+    }
   }
   
   return contexts.join('\n\n');

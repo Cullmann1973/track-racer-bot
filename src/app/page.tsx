@@ -38,8 +38,8 @@ const quickActions = [
   },
   { 
     icon: HelpCircle, 
-    label: 'Missing a part',
-    prompt: "I received my TR120 but I think I'm missing some parts from the hardware kit"
+    label: 'Assembly problems',
+    prompt: "I'm having trouble with assembly - the bolts won't thread properly and the T-nuts keep popping out"
   },
 ];
 

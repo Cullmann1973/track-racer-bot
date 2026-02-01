@@ -1,0 +1,328 @@
+{
+  "commonIssues": [
+    {
+      "id": "hardware-threading",
+      "category": "Assembly",
+      "issue": "Bolts are hard to thread / T-nuts keep popping out",
+      "frequency": "Very Common",
+      "symptoms": [
+        "Bolts won't catch the T-nut threads",
+        "T-nuts pop out of the channel when trying to thread",
+        "Only 1-2mm of thread engagement",
+        "Ball bearing springs on T-nuts are weak"
+      ],
+      "solutions": [
+        "Use a small flat-head screwdriver to hold the T-nut in place while starting the bolt",
+        "Pre-position T-nuts in the channel before attempting to thread",
+        "Apply gentle downward pressure on the bolt while turning to help it catch",
+        "For stubborn T-nuts, use masking tape to temporarily hold them in position",
+        "If spring is weak, replace T-nut from hardware store (standard 40-series T-nut)"
+      ],
+      "preventionTips": [
+        "Work on a flat surface",
+        "Don't fully tighten bolts until all are started",
+        "Have a magnetic parts tray to avoid losing small hardware"
+      ],
+      "partNumbers": ["TNUT-M6-40", "TNUT-M8-40"],
+      "escalation": "If consistently failing, contact support for replacement hardware kit"
+    },
+    {
+      "id": "missing-parts",
+      "category": "Shipping",
+      "issue": "Missing parts from shipment",
+      "frequency": "Common",
+      "symptoms": [
+        "Hardware kit incomplete (missing bolts, T-nuts, washers)",
+        "Entire components missing (seat, pedal plate, brackets)",
+        "Accessories ordered separately not included"
+      ],
+      "solutions": [
+        "Check ALL packaging material - parts sometimes ship loose",
+        "Cross-reference received items against the parts list in the manual",
+        "Take photos of everything received for documentation",
+        "Contact support with: Order number, specific missing part names/quantities, photos of what was received"
+      ],
+      "expectedResolution": "Missing parts typically ship within 5-10 business days",
+      "escalation": "If no response within 48 hours, follow up. Reference ticket number.",
+      "preventionTips": [
+        "Video unboxing for documentation",
+        "Check parts before disposing of packaging"
+      ]
+    },
+    {
+      "id": "shipping-damage",
+      "category": "Shipping", 
+      "issue": "Product arrived damaged",
+      "frequency": "Common",
+      "symptoms": [
+        "Dents or scratches on aluminum profiles",
+        "Bent brackets or mounting plates",
+        "Cracked or broken plastic components",
+        "Cosmetic damage affecting appearance"
+      ],
+      "solutions": [
+        "Document damage with clear photos before assembly",
+        "Note damage on delivery receipt if possible",
+        "Contact support within 48 hours of delivery",
+        "Request replacement part, not just store credit",
+        "For significant damage, request full replacement or return"
+      ],
+      "requiredInfo": [
+        "Order number",
+        "Photos of damaged packaging",
+        "Photos of damaged product from multiple angles",
+        "Description of damage"
+      ],
+      "expectedResolution": "Replacement parts ship within 7-14 business days",
+      "escalation": "If offered inadequate store credit, politely request actual replacement"
+    },
+    {
+      "id": "missing-instructions",
+      "category": "Assembly",
+      "issue": "Missing or unclear assembly instructions",
+      "frequency": "Very Common",
+      "symptoms": [
+        "No instructions included for accessories",
+        "Instructions don't match current product version",
+        "Parts not labeled - have to guess",
+        "Monitor stand instructions particularly problematic"
+      ],
+      "solutions": [
+        "Check online manuals at trakracer.com/pages/assembly-manuals",
+        "Search YouTube for 'Trak Racer [product] assembly'",
+        "For monitor stands, reference smaller version instructions and adapt",
+        "Take photos during assembly in case you need to backtrack",
+        "Join r/simracing Discord for community help"
+      ],
+      "helpfulResources": [
+        "https://trakracer.com/pages/assembly-manuals",
+        "YouTube: Barry Rowland Trak Racer builds",
+        "r/simracing community"
+      ]
+    },
+    {
+      "id": "hole-alignment",
+      "category": "Assembly",
+      "issue": "Holes don't align / tight tolerances",
+      "frequency": "Common",
+      "symptoms": [
+        "Pre-drilled holes don't line up",
+        "Brackets won't sit flush",
+        "Bolts go in at an angle"
+      ],
+      "solutions": [
+        "Loosen adjacent bolts to allow flex for alignment",
+        "Assemble loosely first, then tighten in sequence",
+        "For minor misalignment, use a round file to slightly enlarge hole",
+        "Contact support if holes are significantly off - may need replacement part"
+      ],
+      "preventionTips": [
+        "Don't fully tighten any bolt until all bolts are in place",
+        "Follow tightening sequence in manual"
+      ]
+    },
+    {
+      "id": "seat-wobble",
+      "category": "Usage",
+      "issue": "Seat slider wobble / noise",
+      "frequency": "Common",
+      "symptoms": [
+        "Seat moves side-to-side during use",
+        "Creaking or squeaking when shifting weight",
+        "Slider rails feel loose"
+      ],
+      "solutions": [
+        "Tighten all seat slider mounting bolts",
+        "Check that slider rails are parallel",
+        "Add rubber washers under mounting bolts to reduce vibration",
+        "Apply white lithium grease to slider rails",
+        "For persistent issues, upgrade to aftermarket sliders (Sparco, NRG)"
+      ],
+      "partNumbers": ["SEAT-SLIDER-UPGRADE", "RUBBER-WASHER-KIT"],
+      "escalation": "If slider mechanism is faulty, request warranty replacement"
+    },
+    {
+      "id": "faulty-seat-slider",
+      "category": "Defect",
+      "issue": "Faulty seat slider mechanism",
+      "frequency": "Occasional",
+      "symptoms": [
+        "Slider won't lock in position",
+        "One side engages, other doesn't",
+        "Mechanism feels broken internally"
+      ],
+      "solutions": [
+        "Document with video showing the fault",
+        "Contact support for warranty replacement",
+        "Do not attempt to disassemble the slider mechanism"
+      ],
+      "requiredInfo": [
+        "Order number",
+        "Video of faulty mechanism",
+        "When issue started"
+      ],
+      "expectedResolution": "Warranty replacement slider ships within 7-14 days"
+    },
+    {
+      "id": "pedal-plate-flex",
+      "category": "Usage",
+      "issue": "Pedal plate flex under braking",
+      "frequency": "Common with load cell pedals",
+      "symptoms": [
+        "Pedal plate bends during hard braking",
+        "Noticeable movement/flex at pedal base",
+        "More pronounced with Heusinkveld or high-force pedals"
+      ],
+      "solutions": [
+        "Add support brackets under pedal plate",
+        "Upgrade to reinforced pedal plate for your rig model",
+        "Consider TR160 or TR8 Pro for high-force pedals (80kg+ brake force)",
+        "DIY: Add aluminum angle brackets for additional rigidity"
+      ],
+      "upgradeOptions": [
+        "TR160-PEDAL-PLATE-REINF",
+        "TR8P-PEDAL-PLATE",
+        "PEDAL-SUPPORT-BRACKET-KIT"
+      ]
+    },
+    {
+      "id": "wheel-deck-flex",
+      "category": "Usage",
+      "issue": "Wheel deck flex with high-torque wheelbase",
+      "frequency": "Common with DD wheelbases",
+      "symptoms": [
+        "Wheel deck moves during force feedback",
+        "Noticeable oscillation at high torque",
+        "Mounting bolts loosen over time"
+      ],
+      "solutions": [
+        "Ensure all wheel deck bolts are properly tightened",
+        "Add reinforcement brackets",
+        "Use thread locker (blue Loctite) on mounting bolts",
+        "Consider upgrading to reinforced wheel deck",
+        "For DD2/R21+ torque, TR160 or TR8 Pro recommended"
+      ],
+      "upgradeOptions": [
+        "TR160-WHEEL-DECK-REINF",
+        "WHEEL-DECK-SUPPORT-KIT"
+      ]
+    },
+    {
+      "id": "slow-customer-service",
+      "category": "Support",
+      "issue": "Slow or unresponsive customer service",
+      "frequency": "Commonly Reported",
+      "symptoms": [
+        "No response to support tickets",
+        "Ticket closed without resolution",
+        "Long wait times for replacement parts"
+      ],
+      "solutions": [
+        "Keep all communication in writing (email/ticket system)",
+        "Follow up every 48-72 hours with ticket reference number",
+        "Be specific about what resolution you want",
+        "Escalate via social media (Twitter/X) if no response after 1 week",
+        "For EU/UK: Reference consumer protection rights if applicable",
+        "Credit card chargeback as last resort for non-delivery"
+      ],
+      "preventionTips": [
+        "Document everything from day one",
+        "Keep order confirmations and tracking info",
+        "Take unboxing video"
+      ]
+    },
+    {
+      "id": "monitor-stand-setup",
+      "category": "Assembly",
+      "issue": "Triple monitor stand alignment / gaps",
+      "frequency": "Common",
+      "symptoms": [
+        "Monitors won't sit flush",
+        "Gaps between monitors",
+        "Can't get correct angle",
+        "VESA adapters don't fit"
+      ],
+      "solutions": [
+        "Use VESA spacers if monitors are too close to arm pivots",
+        "Loosen all joints, position monitors, then tighten in sequence",
+        "For 300x300 VESA: community reports adapter quality issues - consider aftermarket",
+        "Check that all monitor arms are on same side of uprights"
+      ],
+      "helpfulResources": [
+        "YouTube: Triple monitor stand alignment tutorials"
+      ]
+    }
+  ],
+  "frequentQuestions": [
+    {
+      "question": "How long does shipping take?",
+      "answer": "Domestic shipping typically 5-10 business days. International 2-4 weeks. Large rigs ship freight and may require appointment delivery."
+    },
+    {
+      "question": "Can I return my rig if I don't like it?",
+      "answer": "Returns accepted within 30 days of delivery in original packaging. Customer pays return shipping. Restocking fee may apply."
+    },
+    {
+      "question": "What tools do I need for assembly?",
+      "answer": "Allen keys (included), adjustable wrench, rubber mallet helpful, power drill optional for faster assembly. Level recommended."
+    },
+    {
+      "question": "How long does assembly take?",
+      "answer": "TR80: 2-3 hours. TR120: 3-4 hours. TR160: 4-5 hours. TR8 Pro: 5-6 hours. Add 1-2 hours for monitor stands."
+    },
+    {
+      "question": "Will my wheelbase fit?",
+      "answer": "All major wheelbases are compatible. Fanatec, Moza, Simagic, Thrustmaster, Logitech all have mounting solutions. Check torque rating matches rig capability."
+    },
+    {
+      "question": "What's the weight limit?",
+      "answer": "Most rigs support 120-150kg (265-330lbs) user weight. Check specific model specs for exact rating."
+    },
+    {
+      "question": "Can I upgrade my rig later?",
+      "answer": "Yes! 40-series aluminum profile is standard. Monitor stands, shifter mounts, and accessories can be added. Wheel/pedal mounting systems are swappable."
+    },
+    {
+      "question": "Is the TR80 enough for a direct drive wheel?",
+      "answer": "TR80 handles up to 8Nm well. For CSL DD at 5-8Nm, it's fine. For DD1 (20Nm) or higher, recommend TR120 or TR160 for rigidity."
+    },
+    {
+      "question": "Do I need the pedal slider kit?",
+      "answer": "Not required but recommended if multiple people use the rig or you want easy adjustment. Adds slight height to pedal deck."
+    },
+    {
+      "question": "What seat should I get?",
+      "answer": "GT seat for long sessions and comfort. RS6 for tighter bolstering and sportier feel. Both work for most users under 6'2\" (188cm)."
+    }
+  ],
+  "proTips": [
+    {
+      "tip": "Watch assembly videos before starting",
+      "detail": "Barry Rowland and other YouTubers have detailed build videos that show what the manual doesn't"
+    },
+    {
+      "tip": "Lay out all parts first",
+      "detail": "Organize hardware by size, identify all profiles before starting. Makes assembly 50% faster"
+    },
+    {
+      "tip": "Don't fully tighten until the end",
+      "detail": "Leave all bolts finger-tight during assembly, then do a final tighten pass in sequence"
+    },
+    {
+      "tip": "Use blue Loctite on critical bolts",
+      "detail": "Wheel deck and pedal plate bolts benefit from thread locker to prevent loosening"
+    },
+    {
+      "tip": "Level your rig",
+      "detail": "Use a bubble level on the wheel deck and seat. Adjust feet as needed for stability"
+    },
+    {
+      "tip": "Take photos during assembly",
+      "detail": "If you need to troubleshoot later or contact support, photos of your build help"
+    },
+    {
+      "tip": "Join the community",
+      "detail": "r/simracing and sim racing Discord servers have people who've solved every issue"
+    }
+  ]
+}
