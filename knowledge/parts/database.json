@@ -1,0 +1,206 @@
+{
+  "parts": {
+    "TR80-FRAME": {
+      "name": "TR80 Main Frame Assembly",
+      "rig": "TR80",
+      "category": "frame",
+      "description": "Complete main frame with pre-drilled mounting points",
+      "weight": "18kg"
+    },
+    "TR80-PEDAL-PLATE": {
+      "name": "TR80 Pedal Mounting Plate",
+      "rig": "TR80",
+      "category": "mount",
+      "description": "Universal pedal mounting plate with adjustment slots"
+    },
+    "TR80-WHEEL-DECK": {
+      "name": "TR80 Wheel Deck",
+      "rig": "TR80",
+      "category": "mount",
+      "description": "Wheelbase mounting platform with 4-point attachment"
+    },
+    "TR80-SEAT-SLIDER": {
+      "name": "TR80 Seat Slider Rails",
+      "rig": "TR80",
+      "category": "seat",
+      "description": "Adjustable seat slider rails (pair)"
+    },
+    "TR120-FRAME": {
+      "name": "TR120 Main Frame Assembly",
+      "rig": "TR120",
+      "category": "frame",
+      "description": "Enhanced 40x80mm profile main frame"
+    },
+    "TR120-PEDAL-PLATE": {
+      "name": "TR120 Pedal Mounting Plate",
+      "rig": "TR120",
+      "category": "mount",
+      "description": "Reinforced pedal plate with angle adjustment"
+    },
+    "TR120-WHEEL-DECK": {
+      "name": "TR120 Wheel Deck",
+      "rig": "TR120",
+      "category": "mount",
+      "description": "Reinforced wheel deck for up to 15Nm"
+    },
+    "TR120-SEAT-SLIDER": {
+      "name": "TR120 Seat Slider Rails",
+      "rig": "TR120",
+      "category": "seat",
+      "description": "Heavy-duty seat slider rails (pair)"
+    },
+    "TR120-SHIFTER-MOUNT": {
+      "name": "TR120 Shifter Mount",
+      "rig": "TR120",
+      "category": "accessory",
+      "description": "Side-mounted shifter bracket"
+    },
+    "TR160-FRAME": {
+      "name": "TR160 Main Frame Assembly",
+      "rig": "TR160",
+      "category": "frame",
+      "description": "40x120mm profile heavy-duty main frame"
+    },
+    "TR160-PEDAL-PLATE-REINF": {
+      "name": "TR160 Reinforced Pedal Plate",
+      "rig": "TR160",
+      "category": "mount",
+      "description": "Zero-flex pedal plate for high-force pedals"
+    },
+    "TR160-WHEEL-DECK-REINF": {
+      "name": "TR160 Reinforced Wheel Deck",
+      "rig": "TR160",
+      "category": "mount",
+      "description": "Zero-flex wheel deck for up to 25Nm"
+    },
+    "TR160-SEAT-SLIDER": {
+      "name": "TR160 Seat Slider Rails",
+      "rig": "TR160",
+      "category": "seat",
+      "description": "Pro-grade seat slider rails (pair)"
+    },
+    "TR160-SHIFTER-MOUNT-L": {
+      "name": "TR160 Left Shifter Mount",
+      "rig": "TR160",
+      "category": "accessory",
+      "description": "Left side shifter/handbrake mount"
+    },
+    "TR160-SHIFTER-MOUNT-R": {
+      "name": "TR160 Right Shifter Mount",
+      "rig": "TR160",
+      "category": "accessory",
+      "description": "Right side shifter mount"
+    },
+    "HARDWARE-KIT-A": {
+      "name": "Hardware Kit A (TR80)",
+      "rig": "TR80",
+      "category": "hardware",
+      "description": "Complete hardware set for TR80 assembly",
+      "contents": [
+        "M8x20 bolts x24",
+        "M6x16 bolts x36",
+        "M8 T-nuts x24",
+        "M6 T-nuts x36",
+        "M8 washers x48",
+        "M6 washers x72",
+        "Allen keys 4mm, 5mm, 6mm"
+      ]
+    },
+    "HARDWARE-KIT-B": {
+      "name": "Hardware Kit B (TR120)",
+      "rig": "TR120",
+      "category": "hardware",
+      "description": "Complete hardware set for TR120 assembly",
+      "contents": [
+        "M8x20 bolts x32",
+        "M8x30 bolts x8",
+        "M6x16 bolts x48",
+        "M8 T-nuts x40",
+        "M6 T-nuts x48",
+        "M8 washers x80",
+        "M6 washers x96",
+        "Allen keys 4mm, 5mm, 6mm"
+      ]
+    },
+    "HARDWARE-KIT-C": {
+      "name": "Hardware Kit C (TR160)",
+      "rig": "TR160",
+      "category": "hardware",
+      "description": "Complete hardware set for TR160 assembly",
+      "contents": [
+        "M8x20 bolts x48",
+        "M8x30 bolts x12",
+        "M8x40 bolts x4",
+        "M6x16 bolts x64",
+        "M8 T-nuts x64",
+        "M6 T-nuts x64",
+        "M8 washers x128",
+        "M6 washers x128",
+        "Allen keys 4mm, 5mm, 6mm"
+      ]
+    },
+    "MOUNT-FANATEC-CSL": {
+      "name": "Fanatec CSL DD Mounting Kit",
+      "category": "mount",
+      "description": "Mounting adapter for Fanatec CSL DD / GT DD Pro",
+      "contents": ["Adapter plate", "M6x20 bolts x4", "Spacers"]
+    },
+    "MOUNT-FANATEC-DD": {
+      "name": "Fanatec DD1/DD2 Mounting Kit",
+      "category": "mount",
+      "description": "Mounting adapter for Fanatec DD1/DD2",
+      "contents": ["Heavy-duty adapter plate", "M8x25 bolts x4", "Reinforcement bracket"]
+    },
+    "MOUNT-MOZA-R9": {
+      "name": "Moza R9/R12 Mounting Kit",
+      "category": "mount",
+      "description": "Mounting adapter for Moza R9 and R12",
+      "contents": ["Adapter plate", "M6x16 bolts x6", "Spacers"]
+    },
+    "MOUNT-MOZA-R16": {
+      "name": "Moza R16/R21 Mounting Kit",
+      "category": "mount",
+      "description": "Heavy-duty mounting for Moza R16/R21",
+      "contents": ["Reinforced adapter plate", "M6x20 bolts x6", "M8 support bolts x4"]
+    },
+    "MOUNT-HEUSINKVELD": {
+      "name": "Heusinkveld Pedal Mounting Kit",
+      "category": "mount",
+      "description": "Adapter for Heusinkveld Sprint/Ultimate pedals",
+      "contents": ["Adapter plates x3", "M6 bolts x12", "Spacers"]
+    },
+    "MOUNT-INVERTED-V3": {
+      "name": "Inverted Pedal Mount Kit",
+      "category": "mount",
+      "description": "Hanging mount for inverted pedals (V3, etc.)",
+      "contents": ["Mounting frame", "Adjustment brackets", "Hardware set"]
+    }
+  },
+  "commonIssues": [
+    {
+      "symptom": "Missing bolts from hardware kit",
+      "resolution": "Verify count against packing list. Request replacement hardware kit section.",
+      "requiredInfo": ["Order number", "Which bolts missing (size)", "Photo of hardware received"]
+    },
+    {
+      "symptom": "Seat slider doesn't fit",
+      "resolution": "Check seat type compatibility. May need adapter rails.",
+      "requiredInfo": ["Seat brand/model", "Photo of seat mounting points"]
+    },
+    {
+      "symptom": "Wheelbase mount holes don't align",
+      "resolution": "May need brand-specific mounting kit. Check wheelbase model.",
+      "requiredInfo": ["Wheelbase brand/model", "Photo of wheelbase base"]
+    },
+    {
+      "symptom": "Profile piece damaged in shipping",
+      "resolution": "Document with photos. Replacement part will be sent.",
+      "requiredInfo": ["Order number", "Which piece damaged", "Photos showing damage"]
+    },
+    {
+      "symptom": "Wrong color/finish received",
+      "resolution": "Verify order details. Arrange exchange if error.",
+      "requiredInfo": ["Order number", "Expected vs received", "Photo"]
+    }
+  ]
+}

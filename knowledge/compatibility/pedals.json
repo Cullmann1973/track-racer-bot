@@ -1,0 +1,189 @@
+{
+  "fanatec": {
+    "brand": "Fanatec",
+    "models": [
+      {
+        "name": "CSL Pedals",
+        "type": "potentiometer",
+        "loadCell": false,
+        "boltPattern": "standard",
+        "notes": "Entry pedals. Direct bolt to all TR pedal plates.",
+        "mountingKit": null
+      },
+      {
+        "name": "CSL Pedals LC",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "notes": "Load cell upgrade. Higher pedal force - use TR160+ for best feel.",
+        "mountingKit": null
+      },
+      {
+        "name": "ClubSport Pedals V3",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "notes": "Pro pedals with vibration. All TR rigs supported.",
+        "mountingKit": null
+      },
+      {
+        "name": "ClubSport Pedals V3 Inverted",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "inverted mount",
+        "notes": "Hanging pedals like a real car. TR160+ recommended for mounting.",
+        "mountingKit": "MOUNT-INVERTED-V3"
+      }
+    ]
+  },
+  "moza": {
+    "brand": "Moza Racing",
+    "models": [
+      {
+        "name": "SR-P",
+        "type": "potentiometer",
+        "loadCell": false,
+        "boltPattern": "standard",
+        "notes": "Basic pedals. Easy mount on any TR rig.",
+        "mountingKit": null
+      },
+      {
+        "name": "SR-P Lite",
+        "type": "potentiometer",
+        "loadCell": false,
+        "boltPattern": "standard",
+        "notes": "2-pedal set. Great starter option.",
+        "mountingKit": null
+      },
+      {
+        "name": "CRP",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "notes": "Load cell pedals. Benefits from solid TR160 mounting.",
+        "mountingKit": null
+      }
+    ]
+  },
+  "heusinkveld": {
+    "brand": "Heusinkveld",
+    "models": [
+      {
+        "name": "Sprint",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "heusinkveld",
+        "brakeForce": "90kg",
+        "notes": "High force load cell. TR160 or TR8 Pro required for no flex.",
+        "mountingKit": "MOUNT-HEUSINKVELD"
+      },
+      {
+        "name": "Ultimate",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "heusinkveld",
+        "brakeForce": "136kg",
+        "notes": "Maximum brake force. TR8 Pro or Alpine only.",
+        "mountingKit": "MOUNT-HEUSINKVELD"
+      },
+      {
+        "name": "Ultimate+",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "heusinkveld",
+        "brakeForce": "200kg",
+        "notes": "Extreme force. Alpine rig recommended.",
+        "mountingKit": "MOUNT-HEUSINKVELD"
+      }
+    ]
+  },
+  "simforge": {
+    "brand": "Simforge",
+    "models": [
+      {
+        "name": "Mark-1",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "brakeForce": "90kg",
+        "notes": "Great value load cell. TR160 for solid mounting.",
+        "mountingKit": null
+      }
+    ]
+  },
+  "thrustmaster": {
+    "brand": "Thrustmaster",
+    "models": [
+      {
+        "name": "T3PA",
+        "type": "potentiometer",
+        "loadCell": false,
+        "boltPattern": "standard",
+        "notes": "Entry 3-pedal set. Any TR rig works.",
+        "mountingKit": "MOUNT-TM-PEDALS"
+      },
+      {
+        "name": "T-LCM",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "brakeForce": "100kg",
+        "notes": "Load cell pedals. TR120 or better for rigidity.",
+        "mountingKit": "MOUNT-TM-PEDALS"
+      }
+    ]
+  },
+  "logitech": {
+    "brand": "Logitech",
+    "models": [
+      {
+        "name": "G29/G920 Pedals",
+        "type": "potentiometer",
+        "loadCell": false,
+        "boltPattern": "standard",
+        "notes": "Included with wheel. Mounts to any TR rig.",
+        "mountingKit": "MOUNT-LOGI-PEDALS"
+      },
+      {
+        "name": "PRO Racing Pedals",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "brakeForce": "90kg",
+        "notes": "Logitech's pro pedals. TR160 recommended.",
+        "mountingKit": "MOUNT-LOGI-PEDALS"
+      }
+    ]
+  },
+  "simagic": {
+    "brand": "Simagic",
+    "models": [
+      {
+        "name": "P-HPR",
+        "type": "hydraulic",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "notes": "Hydraulic feel. Any TR rig handles these well.",
+        "mountingKit": null
+      },
+      {
+        "name": "P1000",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "brakeForce": "100kg",
+        "notes": "High force. TR160 or better.",
+        "mountingKit": null
+      },
+      {
+        "name": "P2000",
+        "type": "load cell",
+        "loadCell": true,
+        "boltPattern": "standard",
+        "brakeForce": "200kg",
+        "notes": "Extreme force. TR8 Pro or Alpine.",
+        "mountingKit": null
+      }
+    ]
+  }
+}

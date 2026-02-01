@@ -1,0 +1,178 @@
+{
+  "rigs": [
+    {
+      "id": "tr80",
+      "name": "TR80 Lite",
+      "category": "Entry Level",
+      "price": 499,
+      "description": "Perfect entry point into sim racing. Sturdy aluminum construction with adjustable seat position.",
+      "features": ["40x40mm aluminum profile", "Adjustable seat slider", "Fits most seats", "Monitor mount ready"],
+      "compatibility": {
+        "wheelbases": ["all"],
+        "pedals": ["all"],
+        "seats": ["TR seats", "Sparco", "NRG", "Bride", "universal bucket seats"]
+      },
+      "maxWheelbaseTorque": "8Nm",
+      "weight": "25kg",
+      "dimensions": "130x60x120cm",
+      "partsIncluded": ["TR80-FRAME", "TR80-PEDAL-PLATE", "TR80-WHEEL-DECK", "TR80-SEAT-SLIDER", "HARDWARE-KIT-A"]
+    },
+    {
+      "id": "tr120",
+      "name": "TR120",
+      "category": "Mid Range",
+      "price": 899,
+      "description": "The most popular choice. Enhanced rigidity for direct drive wheelbases up to 15Nm.",
+      "features": ["40x80mm aluminum profile", "Integrated cable management", "Quick-adjust seat position", "Shifter mount included"],
+      "compatibility": {
+        "wheelbases": ["all"],
+        "pedals": ["all"],
+        "seats": ["TR seats", "Sparco", "NRG", "Bride", "universal bucket seats"],
+        "shifters": ["Fanatec", "Thrustmaster", "SHH", "Aiologs"]
+      },
+      "maxWheelbaseTorque": "15Nm",
+      "weight": "35kg",
+      "dimensions": "140x65x125cm",
+      "partsIncluded": ["TR120-FRAME", "TR120-PEDAL-PLATE", "TR120-WHEEL-DECK", "TR120-SEAT-SLIDER", "TR120-SHIFTER-MOUNT", "HARDWARE-KIT-B"]
+    },
+    {
+      "id": "tr160",
+      "name": "TR160",
+      "category": "Mid Range",
+      "price": 1199,
+      "description": "Built for high-torque direct drive. Reinforced wheel deck and pedal tray for zero flex.",
+      "features": ["40x120mm aluminum profile", "Reinforced wheel deck", "Tilt-adjustable pedal plate", "Dual shifter mounts"],
+      "compatibility": {
+        "wheelbases": ["all"],
+        "pedals": ["all"],
+        "seats": ["TR seats", "Sparco", "NRG", "Bride", "universal bucket seats"],
+        "shifters": ["Fanatec", "Thrustmaster", "SHH", "Aiologs", "Heusinkveld"]
+      },
+      "maxWheelbaseTorque": "25Nm",
+      "weight": "45kg",
+      "dimensions": "145x70x130cm",
+      "partsIncluded": ["TR160-FRAME", "TR160-PEDAL-PLATE-REINF", "TR160-WHEEL-DECK-REINF", "TR160-SEAT-SLIDER", "TR160-SHIFTER-MOUNT-L", "TR160-SHIFTER-MOUNT-R", "HARDWARE-KIT-C"]
+    },
+    {
+      "id": "tr8-pro",
+      "name": "TR8 Pro",
+      "category": "Premium",
+      "price": 1899,
+      "description": "Professional-grade rig with motion platform compatibility. Zero flex at any torque level.",
+      "features": ["80x80mm aluminum profile", "Motion platform ready", "Integrated monitor stand", "Premium quick-release seat mount"],
+      "compatibility": {
+        "wheelbases": ["all"],
+        "pedals": ["all"],
+        "seats": ["TR seats", "Sparco", "NRG", "Bride", "Recaro", "universal bucket seats"],
+        "shifters": ["all"],
+        "handbrakes": ["all"],
+        "buttonBoxes": ["all"]
+      },
+      "maxWheelbaseTorque": "32Nm+",
+      "weight": "65kg",
+      "dimensions": "160x75x140cm",
+      "partsIncluded": ["TR8P-FRAME", "TR8P-PEDAL-PLATE", "TR8P-WHEEL-DECK", "TR8P-SEAT-MOUNT-QR", "TR8P-MONITOR-STAND", "TR8P-SHIFTER-L", "TR8P-SHIFTER-R", "TR8P-HANDBRAKE-MOUNT", "HARDWARE-KIT-PRO"]
+    },
+    {
+      "id": "alpine",
+      "name": "Alpine Racing Simulator",
+      "category": "Ultra Premium",
+      "price": 3499,
+      "description": "The ultimate sim racing experience. F1-style seating position with triple monitor support.",
+      "features": ["100x100mm aluminum profile", "F1 seating position", "Triple 32\" monitor support", "Integrated bass shaker mounts", "Full enclosure option"],
+      "compatibility": {
+        "wheelbases": ["all"],
+        "pedals": ["all"],
+        "seats": ["Alpine F1 seat", "custom F1 seats"],
+        "shifters": ["all"],
+        "handbrakes": ["all"],
+        "buttonBoxes": ["all"]
+      },
+      "maxWheelbaseTorque": "32Nm+",
+      "weight": "95kg",
+      "dimensions": "180x90x150cm",
+      "partsIncluded": ["ALPINE-FRAME", "ALPINE-PEDAL-BOX", "ALPINE-WHEEL-DECK", "ALPINE-SEAT-F1", "ALPINE-TRIPLE-MOUNT", "ALPINE-SHIFTER-MODULE", "ALPINE-BASS-MOUNTS", "HARDWARE-KIT-ALPINE"]
+    }
+  ],
+  "accessories": [
+    {
+      "id": "monitor-stand-single",
+      "name": "Single Monitor Stand",
+      "price": 149,
+      "description": "Adjustable single monitor mount up to 49\" ultrawide",
+      "compatibility": ["TR80", "TR120", "TR160", "TR8 Pro"]
+    },
+    {
+      "id": "monitor-stand-triple",
+      "name": "Triple Monitor Stand",
+      "price": 349,
+      "description": "Triple monitor mount for 27-32\" displays",
+      "compatibility": ["TR120", "TR160", "TR8 Pro", "Alpine"]
+    },
+    {
+      "id": "shifter-mount",
+      "name": "Universal Shifter Mount",
+      "price": 79,
+      "description": "Side-mounted shifter bracket with angle adjustment",
+      "compatibility": ["TR80", "TR120", "TR160", "TR8 Pro"]
+    },
+    {
+      "id": "handbrake-mount",
+      "name": "Handbrake Mount",
+      "price": 69,
+      "description": "Dedicated handbrake mounting bracket",
+      "compatibility": ["TR120", "TR160", "TR8 Pro", "Alpine"]
+    },
+    {
+      "id": "keyboard-tray",
+      "name": "Keyboard Tray",
+      "price": 89,
+      "description": "Slide-out keyboard tray with mouse pad",
+      "compatibility": ["all"]
+    },
+    {
+      "id": "bass-shaker-kit",
+      "name": "Bass Shaker Kit",
+      "price": 199,
+      "description": "4x bass shaker mounting kit with amp",
+      "compatibility": ["TR160", "TR8 Pro", "Alpine"]
+    },
+    {
+      "id": "seat-rs6",
+      "name": "RS6 Racing Seat",
+      "price": 299,
+      "description": "Fixed-back racing seat with side bolsters",
+      "type": "seat"
+    },
+    {
+      "id": "seat-gt",
+      "name": "GT Reclining Seat",
+      "price": 399,
+      "description": "Reclining seat for GT-style comfort",
+      "type": "seat"
+    }
+  ],
+  "bundles": [
+    {
+      "id": "starter-bundle",
+      "name": "Starter Bundle",
+      "includes": ["TR80", "RS6 Racing Seat", "Single Monitor Stand"],
+      "price": 849,
+      "savings": 98
+    },
+    {
+      "id": "enthusiast-bundle", 
+      "name": "Enthusiast Bundle",
+      "includes": ["TR120", "GT Reclining Seat", "Triple Monitor Stand", "Shifter Mount"],
+      "price": 1599,
+      "savings": 177
+    },
+    {
+      "id": "pro-bundle",
+      "name": "Pro Bundle",
+      "includes": ["TR8 Pro", "GT Reclining Seat", "Triple Monitor Stand", "Shifter Mount", "Handbrake Mount", "Bass Shaker Kit"],
+      "price": 2699,
+      "savings": 315
+    }
+  ]
+}

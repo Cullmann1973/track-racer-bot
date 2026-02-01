@@ -1,0 +1,239 @@
+{
+  "fanatec": {
+    "brand": "Fanatec",
+    "models": [
+      {
+        "name": "CSL DD",
+        "torque": "5-8Nm",
+        "boltPattern": "3x50mm + 3x Fanatec",
+        "minRig": "TR80",
+        "recommendedRig": "TR120",
+        "notes": "Entry direct drive. Works great on any TR rig.",
+        "mountingKit": "MOUNT-FANATEC-CSL"
+      },
+      {
+        "name": "DD1",
+        "torque": "20Nm",
+        "boltPattern": "Fanatec QR",
+        "minRig": "TR120",
+        "recommendedRig": "TR160",
+        "notes": "High torque requires solid mounting. TR160 or better recommended.",
+        "mountingKit": "MOUNT-FANATEC-DD"
+      },
+      {
+        "name": "DD2",
+        "torque": "25Nm",
+        "boltPattern": "Fanatec QR",
+        "minRig": "TR160",
+        "recommendedRig": "TR8 Pro",
+        "notes": "Maximum torque. Use TR8 Pro for zero flex.",
+        "mountingKit": "MOUNT-FANATEC-DD"
+      },
+      {
+        "name": "GT DD Pro",
+        "torque": "5-8Nm",
+        "boltPattern": "3x50mm",
+        "minRig": "TR80",
+        "recommendedRig": "TR120",
+        "notes": "PlayStation compatible DD. Any rig works well.",
+        "mountingKit": "MOUNT-FANATEC-CSL"
+      },
+      {
+        "name": "ClubSport Wheelbase V2.5",
+        "torque": "8Nm",
+        "boltPattern": "Fanatec pattern",
+        "minRig": "TR80",
+        "recommendedRig": "TR120",
+        "notes": "Belt-driven. Very compatible with all rigs.",
+        "mountingKit": "MOUNT-FANATEC-CS"
+      }
+    ]
+  },
+  "moza": {
+    "brand": "Moza Racing",
+    "models": [
+      {
+        "name": "R3",
+        "torque": "3.9Nm",
+        "boltPattern": "4x hole pattern",
+        "minRig": "TR80",
+        "recommendedRig": "TR80",
+        "notes": "Budget-friendly entry. Perfect for TR80.",
+        "mountingKit": "MOUNT-MOZA-R3"
+      },
+      {
+        "name": "R5",
+        "torque": "5.5Nm",
+        "boltPattern": "4x hole pattern",
+        "minRig": "TR80",
+        "recommendedRig": "TR120",
+        "notes": "Good mid-range. TR120 provides room to grow.",
+        "mountingKit": "MOUNT-MOZA-R5"
+      },
+      {
+        "name": "R9",
+        "torque": "9Nm",
+        "boltPattern": "6x M6",
+        "minRig": "TR120",
+        "recommendedRig": "TR120",
+        "notes": "Sweet spot for most users. TR120 handles it perfectly.",
+        "mountingKit": "MOUNT-MOZA-R9"
+      },
+      {
+        "name": "R12",
+        "torque": "12Nm",
+        "boltPattern": "6x M6",
+        "minRig": "TR120",
+        "recommendedRig": "TR160",
+        "notes": "High torque requires TR160 for no flex at max power.",
+        "mountingKit": "MOUNT-MOZA-R12"
+      },
+      {
+        "name": "R16",
+        "torque": "16Nm",
+        "boltPattern": "6x M6",
+        "minRig": "TR160",
+        "recommendedRig": "TR8 Pro",
+        "notes": "Pro-level torque. TR8 Pro for the full experience.",
+        "mountingKit": "MOUNT-MOZA-R16"
+      },
+      {
+        "name": "R21",
+        "torque": "21Nm",
+        "boltPattern": "6x M6",
+        "minRig": "TR160",
+        "recommendedRig": "TR8 Pro",
+        "notes": "Top-tier DD. Pair with TR8 Pro or Alpine.",
+        "mountingKit": "MOUNT-MOZA-R21"
+      }
+    ]
+  },
+  "simagic": {
+    "brand": "Simagic",
+    "models": [
+      {
+        "name": "Alpha Mini",
+        "torque": "10Nm",
+        "boltPattern": "4x M6",
+        "minRig": "TR120",
+        "recommendedRig": "TR120",
+        "notes": "Compact powerhouse. TR120 is the sweet spot.",
+        "mountingKit": "MOUNT-SIMAGIC-ALPHA"
+      },
+      {
+        "name": "Alpha",
+        "torque": "15Nm",
+        "boltPattern": "4x M6",
+        "minRig": "TR120",
+        "recommendedRig": "TR160",
+        "notes": "Full-size Alpha needs TR160 for rigidity.",
+        "mountingKit": "MOUNT-SIMAGIC-ALPHA"
+      },
+      {
+        "name": "Alpha Ultimate",
+        "torque": "23Nm",
+        "boltPattern": "4x M6",
+        "minRig": "TR160",
+        "recommendedRig": "TR8 Pro",
+        "notes": "Ultimate torque. Match with ultimate rig.",
+        "mountingKit": "MOUNT-SIMAGIC-ALPHA"
+      }
+    ]
+  },
+  "thrustmaster": {
+    "brand": "Thrustmaster",
+    "models": [
+      {
+        "name": "T150/TMX",
+        "torque": "2.5Nm",
+        "boltPattern": "Clamp or hardmount",
+        "minRig": "TR80",
+        "recommendedRig": "TR80",
+        "notes": "Entry wheel. Clamps to any rig easily.",
+        "mountingKit": null
+      },
+      {
+        "name": "T300/TX",
+        "torque": "3.9Nm",
+        "boltPattern": "Hardmount 2-hole",
+        "minRig": "TR80",
+        "recommendedRig": "TR80",
+        "notes": "Popular mid-range. Hard mount for best experience.",
+        "mountingKit": "MOUNT-TM-T300"
+      },
+      {
+        "name": "TS-XW/TS-PC",
+        "torque": "4.5Nm",
+        "boltPattern": "Hardmount 4-hole",
+        "minRig": "TR80",
+        "recommendedRig": "TR120",
+        "notes": "Top belt-driven. TR120 provides upgrade path.",
+        "mountingKit": "MOUNT-TM-TS"
+      },
+      {
+        "name": "T-GT II",
+        "torque": "4Nm",
+        "boltPattern": "Hardmount 4-hole",
+        "minRig": "TR80",
+        "recommendedRig": "TR120",
+        "notes": "PlayStation flagship. Great on TR120.",
+        "mountingKit": "MOUNT-TM-TGT"
+      }
+    ]
+  },
+  "logitech": {
+    "brand": "Logitech",
+    "models": [
+      {
+        "name": "G29/G920",
+        "torque": "2.1Nm",
+        "boltPattern": "Clamp or hardmount",
+        "minRig": "TR80",
+        "recommendedRig": "TR80",
+        "notes": "Best-selling wheel. Easy to mount on TR80.",
+        "mountingKit": "MOUNT-LOGI-G29"
+      },
+      {
+        "name": "G923",
+        "torque": "2.3Nm",
+        "boltPattern": "Clamp or hardmount",
+        "minRig": "TR80",
+        "recommendedRig": "TR80",
+        "notes": "TrueForce haptics. TR80 is plenty.",
+        "mountingKit": "MOUNT-LOGI-G29"
+      },
+      {
+        "name": "PRO Racing Wheel",
+        "torque": "11Nm",
+        "boltPattern": "4x hardmount",
+        "minRig": "TR120",
+        "recommendedRig": "TR160",
+        "notes": "Logitech's first DD! TR160 handles the torque well.",
+        "mountingKit": "MOUNT-LOGI-PRO"
+      }
+    ]
+  },
+  "cammus": {
+    "brand": "Cammus",
+    "models": [
+      {
+        "name": "C5",
+        "torque": "5Nm",
+        "boltPattern": "4x M6",
+        "minRig": "TR80",
+        "recommendedRig": "TR120",
+        "notes": "Budget DD option. TR120 for best value.",
+        "mountingKit": "MOUNT-CAMMUS"
+      },
+      {
+        "name": "C12",
+        "torque": "12Nm",
+        "boltPattern": "4x M6",
+        "minRig": "TR120",
+        "recommendedRig": "TR160",
+        "notes": "High torque budget option. TR160 recommended.",
+        "mountingKit": "MOUNT-CAMMUS"
+      }
+    ]
+  }
+}
