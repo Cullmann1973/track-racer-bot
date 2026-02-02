@@ -757,23 +757,47 @@ body {
   padding: 8px 16px;
   z-index: 100;
   transition: top 0.2s ease;
+  border-radius: 0 0 8px 0;
 }
 
 .skip-link:focus {
   top: 0;
 }
 
-/* Better focus outlines */
+/* Better focus outlines - Apple-style ring */
 *:focus-visible {
-  outline: 2px solid var(--tr-red);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 3px var(--tr-red), 0 0 0 5px rgba(233, 46, 46, 0.2);
+  border-radius: inherit;
 }
 
-button:focus-visible,
-input:focus-visible,
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--tr-red), 0 0 0 5px rgba(233, 46, 46, 0.2);
+}
+
+input:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--tr-red), 0 0 0 5px rgba(233, 46, 46, 0.15);
+}
+
 a:focus-visible {
-  outline: 2px solid var(--tr-red);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--tr-red);
+  border-radius: 4px;
+}
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* ==================== DARK THEME ENHANCEMENTS ==================== */
@@ -820,6 +844,45 @@ a:focus-visible {
   
   .card-interactive:active {
     background: var(--bg-hover);
+    transform: scale(0.98);
+  }
+  
+  /* Larger touch targets on mobile */
+  button, a {
+    min-height: 44px;
+  }
+  
+  /* Better tap feedback */
+  .btn-primary:active {
+    transform: scale(0.95);
+    transition-duration: 0.05s;
+  }
+  
+  .message-bubble:active {
+    transform: scale(0.99);
+  }
+}
+
+/* Mobile-specific refinements */
+@media (max-width: 640px) {
+  /* Tighter spacing on mobile */
+  .card {
+    border-radius: 14px;
+  }
+  
+  .message-bubble {
+    border-radius: 18px;
+    max-width: 88%;
+  }
+  
+  /* Slightly smaller text */
+  .message-bubble p {
+    font-size: 14px;
+  }
+  
+  /* Full-width input on mobile */
+  .input-wrapper {
+    border-radius: 16px;
   }
 }
 
