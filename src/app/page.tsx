@@ -79,6 +79,13 @@ export default function Home() {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [showWelcome, setShowWelcome] = useState(true);
   const [welcomeFading, setWelcomeFading] = useState(false);
+  const [isPageLoaded, setIsPageLoaded] = useState(false);
+  
+  // Page load animation
+  useEffect(() => {
+    const timer = setTimeout(() => setIsPageLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const messagesContainerRef = useRef<HTMLDivElement>(null);
@@ -196,7 +203,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-[var(--bg-primary)] flex flex-col relative overflow-hidden">
+    <div className={`min-h-screen bg-[var(--bg-primary)] flex flex-col relative overflow-hidden transition-opacity duration-500 ${isPageLoaded ? 'opacity-100' : 'opacity-0'}`}>
       {/* Background effects */}
       <div className="absolute inset-0 pointer-events-none">
         {/* Gradient overlay */}
@@ -295,8 +302,8 @@ export default function Home() {
                   <button
                     key={i}
                     onClick={() => sendMessage(action.prompt)}
-                    className="card card-interactive group flex items-start gap-4 p-4 text-left"
-                    style={{ animationDelay: `${i * 75}ms` }}
+                    className="card card-interactive group flex items-start gap-4 p-4 text-left opacity-0 animate-fade-in-up"
+                    style={{ animationDelay: `${200 + i * 100}ms`, animationFillMode: 'forwards' }}
                   >
                     <div className="p-2.5 rounded-xl bg-gradient-to-br from-[var(--tr-red)] to-[var(--tr-red-dark)] shadow-lg shadow-[var(--tr-red)]/20 group-hover:shadow-[var(--tr-red)]/40 group-hover:scale-110 transition-all duration-300">
                       <action.icon className="w-5 h-5 text-white" />
@@ -336,7 +343,8 @@ export default function Home() {
                     <button
                       key={i}
                       onClick={() => sendMessage(`Tell me about the ${rig.name} rig. What's included and who is it best for?`)}
-                      className="group p-3 rounded-xl bg-[var(--bg-secondary)] hover:bg-[var(--bg-elevated)] border border-[var(--glass-border)] hover:border-[var(--tr-red)]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-left"
+                      className="group p-3 rounded-xl bg-[var(--bg-secondary)] hover:bg-[var(--bg-elevated)] border border-[var(--glass-border)] hover:border-[var(--tr-red)]/30 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200 text-left opacity-0 animate-fade-in-up"
+                      style={{ animationDelay: `${700 + i * 75}ms`, animationFillMode: 'forwards' }}
                     >
                       <div className="text-[10px] font-semibold text-[var(--tr-red)] uppercase tracking-wider mb-1">
                         {rig.tag}
