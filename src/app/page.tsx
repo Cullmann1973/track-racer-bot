@@ -282,7 +282,12 @@ export default function Home() {
           {showWelcome && (
             <div className={`transition-all duration-300 ${welcomeFading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
               {/* Hero */}
-              <div className="text-center mb-10 pt-8 animate-fade-in-up">
+              <div className="text-center mb-10 pt-8 animate-fade-in-up relative">
+                {/* Decorative floating elements */}
+                <div className="absolute -top-4 left-1/4 w-2 h-2 rounded-full bg-[var(--tr-red)]/20 animate-float" style={{ animationDelay: '0s' }} />
+                <div className="absolute top-12 right-1/4 w-1.5 h-1.5 rounded-full bg-[var(--tr-red)]/30 animate-float" style={{ animationDelay: '1s' }} />
+                <div className="absolute -top-2 right-1/3 w-1 h-1 rounded-full bg-[var(--tr-red)]/25 animate-float" style={{ animationDelay: '2s' }} />
+                
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--tr-red)]/10 border border-[var(--tr-red)]/20 mb-6 hover:bg-[var(--tr-red)]/15 hover:scale-105 transition-all cursor-default">
                   <Trophy className="w-3.5 h-3.5 text-[var(--tr-red)]" />
                   <span className="text-xs font-semibold text-[var(--tr-red)] tracking-wide">Official Alpine F1 Team Partner</span>
