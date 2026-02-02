@@ -288,10 +288,16 @@ body {
 /* ==================== GLASS EFFECTS ==================== */
 
 .glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
   border: 1px solid var(--glass-border);
+  /* Subtle gradient overlay for depth */
+  background-image: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0%,
+    transparent 100%
+  );
 }
 
 .glass-subtle {
@@ -407,12 +413,45 @@ body {
 .input-field:focus {
   outline: none;
   border-color: var(--tr-red);
-  box-shadow: 0 0 0 3px rgba(233, 46, 46, 0.15);
+  box-shadow: 0 0 0 4px rgba(233, 46, 46, 0.1);
   background: var(--bg-elevated);
 }
 
 .input-field::placeholder {
   color: var(--text-tertiary);
+  transition: opacity 0.2s ease;
+}
+
+.input-field:focus::placeholder {
+  opacity: 0.5;
+}
+
+/* Input wrapper with animated border */
+.input-wrapper {
+  position: relative;
+  border-radius: 20px;
+  background: var(--bg-tertiary);
+  transition: all 0.25s var(--spring-smooth);
+}
+
+.input-wrapper::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--tr-red), var(--tr-red-dark));
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  z-index: -1;
+}
+
+.input-wrapper:focus-within::before {
+  opacity: 0.5;
+}
+
+.input-wrapper:focus-within {
+  background: var(--bg-elevated);
+  box-shadow: 0 0 30px rgba(233, 46, 46, 0.1);
 }
 
 /* ==================== CARDS ==================== */
@@ -464,17 +503,50 @@ body {
 .message-bubble {
   border-radius: 20px;
   transition: all 0.2s var(--spring-smooth);
+  position: relative;
 }
 
 .message-user {
-  background: linear-gradient(135deg, var(--tr-red) 0%, var(--tr-red-dark) 100%);
+  background: linear-gradient(180deg, var(--tr-red) 0%, var(--tr-red-dark) 100%);
   border-bottom-right-radius: 6px;
+  box-shadow: 
+    0 2px 8px rgba(233, 46, 46, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 
 .message-assistant {
   background: var(--bg-elevated);
   border: 1px solid var(--glass-border);
   border-bottom-left-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Subtle hover effect on messages */
+.message-bubble:hover {
+  transform: scale(1.005);
+}
+
+/* Message tail - like iMessage */
+.message-user::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: -6px;
+  width: 12px;
+  height: 12px;
+  background: var(--tr-red-dark);
+  clip-path: polygon(0 0, 0 100%, 100% 100%);
+}
+
+.message-assistant::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -6px;
+  width: 12px;
+  height: 12px;
+  background: var(--bg-elevated);
+  clip-path: polygon(100% 0, 0 100%, 100% 100%);
 }
 
 /* ==================== TYPING INDICATOR ==================== */
@@ -507,18 +579,33 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 12px;
+  border-radius: 14px;
   transition: all 0.2s var(--spring-smooth);
+  flex-shrink: 0;
 }
 
 .avatar-bot {
-  background: linear-gradient(135deg, var(--tr-red) 0%, var(--tr-red-dark) 100%);
-  box-shadow: 0 2px 8px rgba(233, 46, 46, 0.3);
+  background: linear-gradient(180deg, var(--tr-red) 0%, var(--tr-red-dark) 100%);
+  box-shadow: 
+    0 4px 12px rgba(233, 46, 46, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.avatar-bot:hover {
+  transform: scale(1.05);
+  box-shadow: 
+    0 6px 20px rgba(233, 46, 46, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .avatar-user {
-  background: var(--bg-elevated);
+  background: linear-gradient(180deg, var(--bg-hover) 0%, var(--bg-elevated) 100%);
   border: 1px solid var(--glass-border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.avatar-user:hover {
+  transform: scale(1.05);
 }
 
 /* ==================== STATUS INDICATOR ==================== */
