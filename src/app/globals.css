@@ -1,26 +1,172 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Trak Racer Brand Colors */
+  --tr-red: #E92E2E;
+  --tr-red-dark: #DE2330;
+  --tr-red-light: #F35046;
+  --tr-black: #000000;
+  --tr-dark-1: #0a0a0a;
+  --tr-dark-2: #121212;
+  --tr-dark-3: #151515;
+  --tr-dark-4: #1a1a1a;
+  --tr-gray: #3A3A3A;
+  --tr-gray-light: #606060;
+  --tr-white: #ffffff;
+  
+  /* Alpine Partnership Blue (for accents) */
+  --tr-alpine-blue: #0078D4;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--tr-dark-1);
+  color: var(--tr-white);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--tr-dark-2);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--tr-gray);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--tr-gray-light);
+}
+
+/* Animations */
+@keyframes pulse-red {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(233, 46, 46, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(233, 46, 46, 0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-pulse-red {
+  animation: pulse-red 2s infinite;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}
+
+/* Racing stripe accent */
+.racing-stripe {
+  position: relative;
+}
+
+.racing-stripe::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--tr-red) 0%, var(--tr-red-dark) 100%);
+  border-radius: 2px;
+}
+
+/* Gradient backgrounds */
+.bg-tr-gradient {
+  background: linear-gradient(135deg, var(--tr-dark-1) 0%, var(--tr-dark-2) 50%, var(--tr-dark-3) 100%);
+}
+
+.bg-tr-gradient-radial {
+  background: radial-gradient(ellipse at top, var(--tr-dark-3) 0%, var(--tr-dark-1) 70%);
+}
+
+/* Button styles */
+.btn-tr-primary {
+  background: linear-gradient(135deg, var(--tr-red) 0%, var(--tr-red-dark) 100%);
+  color: white;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-tr-primary:hover {
+  background: linear-gradient(135deg, var(--tr-red-light) 0%, var(--tr-red) 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(233, 46, 46, 0.3);
+}
+
+.btn-tr-primary:active {
+  transform: translateY(0);
+}
+
+/* Card styles */
+.card-tr {
+  background: var(--tr-dark-2);
+  border: 1px solid var(--tr-dark-4);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.card-tr:hover {
+  border-color: var(--tr-gray);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Input styles */
+.input-tr {
+  background: var(--tr-dark-2);
+  border: 1px solid var(--tr-dark-4);
+  color: var(--tr-white);
+  transition: all 0.2s ease;
+}
+
+.input-tr:focus {
+  border-color: var(--tr-red);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(233, 46, 46, 0.1);
+}
+
+.input-tr::placeholder {
+  color: var(--tr-gray-light);
+}
+
+/* Message bubbles */
+.message-user {
+  background: linear-gradient(135deg, var(--tr-red) 0%, var(--tr-red-dark) 100%);
+}
+
+.message-assistant {
+  background: var(--tr-dark-3);
+  border: 1px solid var(--tr-dark-4);
+}
+
+/* Logo text styling */
+.logo-text {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.logo-text-red {
+  color: var(--tr-red);
 }
