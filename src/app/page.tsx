@@ -400,11 +400,14 @@ export default function Home() {
                   <div className="avatar avatar-bot w-9 h-9 flex-shrink-0 animate-pulse-glow">
                     <Bot className="w-5 h-5 text-white" />
                   </div>
-                  <div className="message-bubble message-assistant">
-                    <div className="typing-indicator">
-                      <div className="typing-dot" />
-                      <div className="typing-dot" />
-                      <div className="typing-dot" />
+                  <div className="message-bubble message-assistant px-4 py-3">
+                    <div className="flex items-center gap-3">
+                      <div className="flex items-center gap-1">
+                        <div className="typing-dot" />
+                        <div className="typing-dot" />
+                        <div className="typing-dot" />
+                      </div>
+                      <span className="text-[13px] text-[var(--text-quaternary)]">Thinking...</span>
                     </div>
                   </div>
                 </div>
