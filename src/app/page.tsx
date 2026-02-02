@@ -1,24 +1,25 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import Image from 'next/image';
 import { 
   Send, 
-  Loader2, 
   Bot, 
   User, 
-  ShoppingCart, 
-  Package, 
-  Wrench,
-  HelpCircle,
   ChevronRight,
-  Headphones,
   Gauge,
+  Package,
+  Wrench,
+  Zap,
   Trophy,
-  Zap
+  Headphones,
+  MessageSquare,
+  ArrowDown,
+  Sparkles
 } from 'lucide-react';
 
 interface Message {
+  id: string;
   role: 'user' | 'assistant';
   content: string;
   timestamp: Date;
@@ -28,54 +29,81 @@ const quickActions = [
   { 
     icon: Gauge, 
     label: 'Find my perfect rig',
+    description: 'Get personalized recommendations',
     prompt: "I'm looking for a sim racing rig. Can you help me choose the right one based on my equipment?",
-    color: 'from-red-600 to-red-700'
   },
   { 
     icon: Zap, 
     label: 'Check compatibility',
+    description: 'Verify your gear works',
     prompt: "I have a Fanatec DD2 wheelbase and Heusinkveld Sprint pedals. What Trak Racer rig would work best?",
-    color: 'from-orange-600 to-red-600'
   },
   { 
     icon: Package, 
     label: 'Track my order',
-    prompt: "I'd like to check on my order status. My order number is TR-12345",
-    color: 'from-blue-600 to-blue-700'
+    description: 'Get shipping updates',
+    prompt: "I'd like to check on my order status",
   },
   { 
     icon: Wrench, 
     label: 'Assembly help',
-    prompt: "I'm having trouble with assembly - the bolts won't thread properly and the T-nuts keep popping out of the channel",
-    color: 'from-gray-600 to-gray-700'
+    description: 'Troubleshoot issues',
+    prompt: "I'm having trouble with assembly - the bolts won't thread properly",
   },
 ];
 
-const features = [
-  { icon: Trophy, label: 'Official Alpine F1 Partner', desc: 'Used by professional drivers' },
-  { icon: Gauge, label: 'Expert Recommendations', desc: 'AI-powered rig matching' },
-  { icon: Headphones, label: '24/7 Support', desc: 'Instant answers to your questions' },
+const popularRigs = [
+  { name: 'TR80S', price: '$499', tag: 'Entry Level', delay: 0 },
+  { name: 'TR120S V2', price: '$719', tag: 'Best Seller', delay: 50 },
+  { name: 'TR160 V5', price: '$879', tag: 'Performance', delay: 100 },
+  { name: 'TR8 Pro V2', price: '$699', tag: 'Premium', delay: 150 },
 ];
+
+// Generate unique ID
+const generateId = () => Math.random().toString(36).substr(2, 9);
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [showScrollButton, setShowScrollButton] = useState(false);
+  const [isInputFocused, setIsInputFocused] = useState(false);
+  
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollToBottom = useCallback((behavior: ScrollBehavior = 'smooth') => {
+    messagesEndRef.current?.scrollIntoView({ behavior });
+  }, []);
 
+  // Handle scroll position for button visibility
   useEffect(() => {
-    scrollToBottom();
-  }, [messages]);
+    const container = messagesContainerRef.current;
+    if (!container) return;
+
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } = container;
+      const isNearBottom = scrollHeight - scrollTop - clientHeight < 100;
+      setShowScrollButton(!isNearBottom && messages.length > 0);
+    };
+
+    container.addEventListener('scroll', handleScroll);
+    return () => container.removeEventListener('scroll', handleScroll);
+  }, [messages.length]);
+
+  // Auto-scroll on new messages
+  useEffect(() => {
+    if (messages.length > 0) {
+      scrollToBottom();
+    }
+  }, [messages, scrollToBottom]);
 
   const sendMessage = async (content: string) => {
     if (!content.trim() || isLoading) return;
 
     const userMessage: Message = {
+      id: generateId(),
       role: 'user',
       content: content.trim(),
       timestamp: new Date(),
@@ -102,6 +130,7 @@ export default function Home() {
       const data = await response.json();
       
       const assistantMessage: Message = {
+        id: generateId(),
         role: 'assistant',
         content: data.response,
         timestamp: new Date(),
@@ -111,8 +140,9 @@ export default function Home() {
     } catch (error) {
       console.error('Error:', error);
       setMessages(prev => [...prev, {
+        id: generateId(),
         role: 'assistant',
-        content: "I'm experiencing a connection issue. Please try again or contact us at support@trakracer.com",
+        content: "I'm having trouble connecting right now. Please try again in a moment, or reach out to support@trakracer.com",
         timestamp: new Date(),
       }]);
     } finally {
@@ -126,104 +156,116 @@ export default function Home() {
     sendMessage(input);
   };
 
-  const handleQuickAction = (prompt: string) => {
-    sendMessage(prompt);
-  };
-
   return (
-    <div className="min-h-screen bg-tr-gradient flex flex-col">
+    <div className="min-h-screen bg-[var(--bg-primary)] flex flex-col">
       {/* Header */}
-      <header className="border-b border-[#1a1a1a] bg-[#0a0a0a]/95 backdrop-blur-md sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-4 py-3">
+      <header className="glass sticky top-0 z-50 border-b border-[var(--glass-border)]">
+        <div className="max-w-3xl mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <Image 
                 src="/trakracer-logo-full.png" 
                 alt="Trak Racer" 
-                width={160} 
-                height={43}
-                className="h-8 w-auto"
+                width={140} 
+                height={38}
+                className="h-7 w-auto"
                 priority
               />
-              <div className="hidden sm:block h-6 w-px bg-[#3A3A3A]" />
-              <span className="hidden sm:block text-sm text-[#606060] font-medium">Support Assistant</span>
+              <div className="hidden sm:flex items-center gap-2 ml-3">
+                <div className="h-4 w-px bg-[var(--glass-border)]" />
+                <span className="text-xs font-medium text-[var(--text-tertiary)]">AI Support</span>
+              </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="flex items-center gap-1.5">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs text-[#606060]">Online</span>
+            <div className="flex items-center gap-2 text-xs">
+              <div className="relative flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[var(--bg-tertiary)]">
+                <div className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[var(--text-tertiary)]">Online</span>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      {/* Chat Area */}
-      <main className="flex-1 max-w-5xl w-full mx-auto flex flex-col">
-        <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      {/* Chat Container */}
+      <main className="flex-1 flex flex-col max-w-3xl w-full mx-auto">
+        {/* Messages Area */}
+        <div 
+          ref={messagesContainerRef}
+          className="flex-1 overflow-y-auto scrollbar-hide px-4 py-6"
+        >
           {/* Welcome Screen */}
           {messages.length === 0 && (
-            <div className="py-8 animate-slide-up">
-              {/* Hero Section */}
-              <div className="text-center mb-10">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-[#E92E2E]/10 border border-[#E92E2E]/20 rounded-full mb-6">
-                  <Trophy className="w-4 h-4 text-[#E92E2E]" />
-                  <span className="text-sm text-[#E92E2E] font-medium">Official Alpine F1 Team Partner</span>
+            <div className="animate-fade-in-up">
+              {/* Hero */}
+              <div className="text-center mb-10 pt-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--tr-red)]/10 border border-[var(--tr-red)]/20 mb-6 animate-bounce-in">
+                  <Trophy className="w-3.5 h-3.5 text-[var(--tr-red)]" />
+                  <span className="text-xs font-medium text-[var(--tr-red)]">Official Alpine F1 Team Partner</span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-bold text-white mb-3">
-                  How can we help you today?
+                
+                <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-3 tracking-tight text-balance">
+                  How can I help you today?
                 </h1>
-                <p className="text-[#606060] max-w-lg mx-auto">
-                  Get expert advice on rigs, check compatibility with your gear, 
-                  track orders, or troubleshoot assembly issues.
+                <p className="text-[var(--text-secondary)] text-base max-w-md mx-auto">
+                  Get expert advice on sim racing rigs, check compatibility, track orders, or troubleshoot assembly.
                 </p>
               </div>
 
-              {/* Quick Actions Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto mb-10">
+              {/* Quick Actions */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10 stagger-children">
                 {quickActions.map((action, i) => (
                   <button
                     key={i}
-                    onClick={() => handleQuickAction(action.prompt)}
-                    className="group relative flex items-center gap-4 p-4 bg-[#121212] hover:bg-[#1a1a1a] border border-[#1a1a1a] hover:border-[#E92E2E]/30 rounded-xl text-left transition-all duration-200"
+                    onClick={() => sendMessage(action.prompt)}
+                    className="card card-interactive group flex items-start gap-4 p-4 text-left"
                   >
-                    <div className={`p-2.5 rounded-lg bg-gradient-to-br ${action.color}`}>
+                    <div className="p-2.5 rounded-xl bg-gradient-to-br from-[var(--tr-red)] to-[var(--tr-red-dark)] shadow-lg shadow-[var(--tr-red)]/20 group-hover:shadow-[var(--tr-red)]/30 transition-shadow">
                       <action.icon className="w-5 h-5 text-white" />
                     </div>
-                    <span className="text-sm text-white font-medium flex-1">{action.label}</span>
-                    <ChevronRight className="w-4 h-4 text-[#3A3A3A] group-hover:text-[#E92E2E] group-hover:translate-x-0.5 transition-all" />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center gap-2">
+                        <span className="font-semibold text-[var(--text-primary)]">{action.label}</span>
+                        <ChevronRight className="w-4 h-4 text-[var(--text-quaternary)] group-hover:text-[var(--tr-red)] group-hover:translate-x-0.5 transition-all" />
+                      </div>
+                      <span className="text-sm text-[var(--text-tertiary)]">{action.description}</span>
+                    </div>
                   </button>
                 ))}
               </div>
 
               {/* Features */}
-              <div className="flex flex-wrap justify-center gap-6 text-center">
-                {features.map((feature, i) => (
-                  <div key={i} className="flex items-center gap-2 text-sm text-[#606060]">
-                    <feature.icon className="w-4 h-4 text-[#E92E2E]" />
-                    <span>{feature.label}</span>
+              <div className="flex flex-wrap justify-center gap-6 mb-10">
+                {[
+                  { icon: Trophy, label: 'F1 Partnership' },
+                  { icon: Sparkles, label: 'AI-Powered' },
+                  { icon: Headphones, label: 'Instant Support' },
+                ].map((f, i) => (
+                  <div key={i} className="flex items-center gap-2 text-sm text-[var(--text-tertiary)]">
+                    <f.icon className="w-4 h-4 text-[var(--tr-red)]" />
+                    <span>{f.label}</span>
                   </div>
                 ))}
               </div>
 
-              {/* Product Highlights */}
-              <div className="mt-12 p-6 bg-[#121212] border border-[#1a1a1a] rounded-2xl">
-                <h3 className="text-sm font-semibold text-[#606060] uppercase tracking-wider mb-4">Popular Rigs</h3>
-                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-                  {[
-                    { name: 'TR80S', price: '$499', desc: 'Entry Level' },
-                    { name: 'TR120S V2', price: '$719', desc: 'Best Seller' },
-                    { name: 'TR160 V5', price: '$879', desc: 'High Performance' },
-                    { name: 'TR8 Pro V2', price: '$699', desc: 'Premium' },
-                  ].map((rig, i) => (
+              {/* Popular Rigs */}
+              <div className="card p-5">
+                <h3 className="text-xs font-semibold text-[var(--text-tertiary)] uppercase tracking-wider mb-4">
+                  Popular Rigs
+                </h3>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 stagger-children">
+                  {popularRigs.map((rig, i) => (
                     <button
                       key={i}
-                      onClick={() => sendMessage(`Tell me about the ${rig.name} rig`)}
-                      className="p-3 bg-[#0a0a0a] hover:bg-[#1a1a1a] border border-[#1a1a1a] hover:border-[#E92E2E]/30 rounded-lg text-left transition-all group"
+                      onClick={() => sendMessage(`Tell me about the ${rig.name} rig. What's included and who is it best for?`)}
+                      className="group p-3 rounded-xl bg-[var(--bg-secondary)] hover:bg-[var(--bg-elevated)] border border-[var(--glass-border)] hover:border-[var(--tr-red)]/30 transition-all text-left"
                     >
-                      <div className="text-xs text-[#E92E2E] font-medium mb-1">{rig.desc}</div>
-                      <div className="text-white font-semibold">{rig.name}</div>
-                      <div className="text-sm text-[#606060]">{rig.price}</div>
+                      <div className="text-[10px] font-semibold text-[var(--tr-red)] uppercase tracking-wider mb-1">
+                        {rig.tag}
+                      </div>
+                      <div className="font-bold text-[var(--text-primary)] group-hover:text-white transition-colors">
+                        {rig.name}
+                      </div>
+                      <div className="text-sm text-[var(--text-tertiary)]">{rig.price}</div>
                     </button>
                   ))}
                 </div>
@@ -232,97 +274,119 @@ export default function Home() {
           )}
 
           {/* Messages */}
-          {messages.map((message, index) => (
-            <div
-              key={index}
-              className={`flex gap-3 animate-slide-up ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-            >
-              {message.role === 'assistant' && (
-                <div className="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-[#E92E2E] to-[#DE2330] rounded-lg flex items-center justify-center shadow-lg shadow-[#E92E2E]/20">
+          <div className="space-y-4">
+            {messages.map((message, index) => (
+              <div
+                key={message.id}
+                className={`flex gap-3 ${message.role === 'user' ? 'justify-end' : 'justify-start'} ${
+                  message.role === 'user' ? 'animate-slide-in-right' : 'animate-slide-in-left'
+                }`}
+                style={{ animationDelay: `${index * 50}ms` }}
+              >
+                {message.role === 'assistant' && (
+                  <div className="avatar avatar-bot w-9 h-9 flex-shrink-0">
+                    <Bot className="w-5 h-5 text-white" />
+                  </div>
+                )}
+                <div
+                  className={`message-bubble max-w-[85%] sm:max-w-[75%] px-4 py-3 ${
+                    message.role === 'user' ? 'message-user' : 'message-assistant'
+                  }`}
+                >
+                  <p className="text-[15px] leading-relaxed whitespace-pre-wrap text-white">
+                    {message.content}
+                  </p>
+                </div>
+                {message.role === 'user' && (
+                  <div className="avatar avatar-user w-9 h-9 flex-shrink-0">
+                    <User className="w-5 h-5 text-[var(--text-secondary)]" />
+                  </div>
+                )}
+              </div>
+            ))}
+
+            {/* Typing Indicator */}
+            {isLoading && (
+              <div className="flex gap-3 justify-start animate-slide-in-left">
+                <div className="avatar avatar-bot w-9 h-9 flex-shrink-0 animate-pulse-glow">
                   <Bot className="w-5 h-5 text-white" />
                 </div>
-              )}
-              <div
-                className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                  message.role === 'user'
-                    ? 'message-user text-white'
-                    : 'message-assistant text-gray-100'
-                }`}
-              >
-                <p className="whitespace-pre-wrap text-sm leading-relaxed">{message.content}</p>
-              </div>
-              {message.role === 'user' && (
-                <div className="flex-shrink-0 w-9 h-9 bg-[#3A3A3A] rounded-lg flex items-center justify-center">
-                  <User className="w-5 h-5 text-white" />
-                </div>
-              )}
-            </div>
-          ))}
-
-          {/* Loading indicator */}
-          {isLoading && (
-            <div className="flex gap-3 justify-start animate-slide-up">
-              <div className="flex-shrink-0 w-9 h-9 bg-gradient-to-br from-[#E92E2E] to-[#DE2330] rounded-lg flex items-center justify-center animate-pulse-red">
-                <Bot className="w-5 h-5 text-white" />
-              </div>
-              <div className="message-assistant rounded-2xl px-4 py-3">
-                <div className="flex items-center gap-2">
-                  <Loader2 className="w-4 h-4 text-[#E92E2E] animate-spin" />
-                  <span className="text-sm text-[#606060]">Thinking...</span>
+                <div className="message-bubble message-assistant">
+                  <div className="typing-indicator">
+                    <div className="typing-dot" />
+                    <div className="typing-dot" />
+                    <div className="typing-dot" />
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
+            )}
+          </div>
 
-          <div ref={messagesEndRef} />
+          <div ref={messagesEndRef} className="h-4" />
         </div>
 
+        {/* Scroll to Bottom Button */}
+        {showScrollButton && (
+          <button
+            onClick={() => scrollToBottom()}
+            className="absolute bottom-28 left-1/2 -translate-x-1/2 p-2 rounded-full glass animate-bounce-in shadow-lg hover:bg-[var(--bg-elevated)] transition-colors"
+          >
+            <ArrowDown className="w-5 h-5 text-[var(--text-secondary)]" />
+          </button>
+        )}
+
         {/* Input Area */}
-        <div className="border-t border-[#1a1a1a] bg-[#0a0a0a]/95 backdrop-blur-md p-4">
-          <form onSubmit={handleSubmit} className="max-w-4xl mx-auto">
-            <div className="flex gap-3">
+        <div className="glass border-t border-[var(--glass-border)] p-4">
+          <form onSubmit={handleSubmit} className="relative">
+            <div className={`flex gap-3 p-1 rounded-2xl transition-all duration-200 ${
+              isInputFocused 
+                ? 'bg-[var(--bg-tertiary)] ring-2 ring-[var(--tr-red)]/20' 
+                : 'bg-[var(--bg-tertiary)]'
+            }`}>
               <input
                 ref={inputRef}
                 type="text"
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about rigs, compatibility, orders, or assembly..."
-                className="flex-1 px-4 py-3 input-tr rounded-xl text-sm"
+                onFocus={() => setIsInputFocused(true)}
+                onBlur={() => setIsInputFocused(false)}
+                placeholder="Ask anything about Trak Racer..."
+                className="flex-1 px-4 py-3 bg-transparent text-[var(--text-primary)] text-[15px] placeholder:text-[var(--text-quaternary)] focus:outline-none"
                 disabled={isLoading}
               />
               <button
                 type="submit"
                 disabled={isLoading || !input.trim()}
-                className="px-5 py-3 btn-tr-primary rounded-xl disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none disabled:shadow-none flex items-center gap-2"
+                className="btn-primary px-5 py-3 flex items-center justify-center disabled:opacity-40"
               >
                 {isLoading ? (
-                  <Loader2 className="w-5 h-5 animate-spin" />
+                  <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin-smooth" />
                 ) : (
                   <Send className="w-5 h-5" />
                 )}
               </button>
             </div>
-            <p className="text-center text-xs text-[#3A3A3A] mt-3">
-              Powered by AI • Trained on Trak Racer products & support documentation
+            
+            {/* Input hint */}
+            <p className="text-center text-[11px] text-[var(--text-quaternary)] mt-3">
+              Powered by AI · Trained on Trak Racer products & support docs
             </p>
           </form>
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-[#1a1a1a] py-4 bg-[#0a0a0a]">
-        <div className="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-          <p className="text-[#3A3A3A] text-xs">
-            © 2026 Trak Racer • AI Assistant Demo
-          </p>
-          <div className="flex items-center gap-4 text-xs">
-            <a href="https://trakracer.com" target="_blank" rel="noopener noreferrer" className="text-[#606060] hover:text-[#E92E2E] transition-colors">
+      {/* Minimal Footer */}
+      <footer className="border-t border-[var(--glass-border)] py-3 bg-[var(--bg-primary)]">
+        <div className="max-w-3xl mx-auto px-4 flex items-center justify-between text-[11px] text-[var(--text-quaternary)]">
+          <span>© 2026 Trak Racer</span>
+          <div className="flex items-center gap-4">
+            <a href="https://trakracer.com" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--tr-red)] transition-colors">
               Shop
             </a>
-            <a href="https://trakracer.com/pages/assembly-manuals" target="_blank" rel="noopener noreferrer" className="text-[#606060] hover:text-[#E92E2E] transition-colors">
+            <a href="https://trakracer.com/pages/assembly-manuals" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--tr-red)] transition-colors">
               Manuals
             </a>
-            <a href="mailto:support@trakracer.com" className="text-[#606060] hover:text-[#E92E2E] transition-colors">
+            <a href="mailto:support@trakracer.com" className="hover:text-[var(--tr-red)] transition-colors">
               Contact
             </a>
           </div>
