@@ -283,16 +283,16 @@ export default function Home() {
             <div className={`transition-all duration-300 ${welcomeFading ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}>
               {/* Hero */}
               <div className="text-center mb-10 pt-8 animate-fade-in-up">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--tr-red)]/10 border border-[var(--tr-red)]/20 mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[var(--tr-red)]/10 border border-[var(--tr-red)]/20 mb-6 hover:bg-[var(--tr-red)]/15 hover:scale-105 transition-all cursor-default">
                   <Trophy className="w-3.5 h-3.5 text-[var(--tr-red)]" />
-                  <span className="text-xs font-medium text-[var(--tr-red)]">Official Alpine F1 Team Partner</span>
+                  <span className="text-xs font-semibold text-[var(--tr-red)] tracking-wide">Official Alpine F1 Team Partner</span>
                 </div>
                 
-                <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-3 tracking-tight">
+                <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)] mb-4 tracking-tight">
                   How can I help you today?
                 </h1>
-                <p className="text-[var(--text-secondary)] text-base max-w-md mx-auto leading-relaxed">
-                  Get expert advice on sim racing rigs, check compatibility, track orders, or troubleshoot assembly.
+                <p className="text-[var(--text-secondary)] text-base sm:text-lg max-w-lg mx-auto leading-relaxed">
+                  Expert advice on sim racing rigs, compatibility checks, order tracking, and assembly support.
                 </p>
               </div>
 
@@ -490,17 +490,17 @@ export default function Home() {
       </main>
 
       {/* Minimal Footer */}
-      <footer className="border-t border-[var(--glass-border)] py-3 bg-[var(--bg-primary)]">
-        <div className="max-w-3xl mx-auto px-4 flex items-center justify-between text-[11px] text-[var(--text-quaternary)]">
-          <span>© 2026 Trak Racer</span>
-          <div className="flex items-center gap-4">
-            <a href="https://trakracer.com" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--tr-red)] transition-colors">
+      <footer className="border-t border-[var(--glass-border)] py-4 bg-[var(--bg-primary)]">
+        <div className="max-w-3xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-[var(--text-quaternary)]">
+          <span className="order-2 sm:order-1">© 2026 Trak Racer · AI Assistant Demo</span>
+          <div className="flex items-center gap-5 order-1 sm:order-2">
+            <a href="https://trakracer.com" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--tr-red)] transition-colors font-medium">
               Shop
             </a>
-            <a href="https://trakracer.com/pages/assembly-manuals" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--tr-red)] transition-colors">
+            <a href="https://trakracer.com/pages/assembly-manuals" target="_blank" rel="noopener noreferrer" className="hover:text-[var(--tr-red)] transition-colors font-medium">
               Manuals
             </a>
-            <a href="mailto:support@trakracer.com" className="hover:text-[var(--tr-red)] transition-colors">
+            <a href="mailto:support@trakracer.com" className="hover:text-[var(--tr-red)] transition-colors font-medium">
               Contact
             </a>
           </div>
