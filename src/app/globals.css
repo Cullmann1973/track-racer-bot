@@ -530,3 +530,162 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* ==================== ENHANCED MICRO-INTERACTIONS ==================== */
+
+/* Hover lift effect */
+.hover-lift {
+  transition: transform 0.2s var(--spring-smooth), box-shadow 0.2s var(--spring-smooth);
+}
+
+.hover-lift:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.hover-lift:active {
+  transform: translateY(0);
+}
+
+/* Scale on press */
+.press-scale {
+  transition: transform 0.15s var(--spring-bounce);
+}
+
+.press-scale:active {
+  transform: scale(0.97);
+}
+
+/* Subtle glow on hover */
+.hover-glow {
+  transition: box-shadow 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px rgba(233, 46, 46, 0.15);
+}
+
+/* Icon bounce on hover */
+.icon-bounce:hover svg {
+  animation: bounceIn 0.4s var(--spring-bounce);
+}
+
+/* Underline animation */
+.underline-animate {
+  position: relative;
+}
+
+.underline-animate::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--tr-red);
+  transition: width 0.3s var(--spring-smooth);
+}
+
+.underline-animate:hover::after {
+  width: 100%;
+}
+
+/* ==================== FOCUS STATES ==================== */
+
+/* Skip link for accessibility */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--tr-red);
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s ease;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Better focus outlines */
+*:focus-visible {
+  outline: 2px solid var(--tr-red);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+  outline: 2px solid var(--tr-red);
+  outline-offset: 2px;
+}
+
+/* ==================== DARK THEME ENHANCEMENTS ==================== */
+
+/* Subtle noise texture overlay */
+.noise-overlay::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  opacity: 0.015;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* Vignette effect */
+.vignette::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+}
+
+/* ==================== RESPONSIVE REFINEMENTS ==================== */
+
+@media (max-width: 640px) {
+  .message-bubble {
+    max-width: 90%;
+  }
+  
+  .card {
+    padding: 1rem;
+  }
+}
+
+/* Touch device optimizations */
+@media (hover: none) {
+  .hover-lift:hover,
+  .hover-glow:hover,
+  .card-interactive:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .card-interactive:active {
+    background: var(--bg-hover);
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  :root {
+    --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+  }
+}
+
+/* ==================== PRINT STYLES ==================== */
+
+@media print {
+  .glass,
+  footer,
+  .btn-primary {
+    display: none;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}
